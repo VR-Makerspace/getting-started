@@ -1,0 +1,101 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <title>VRNM Makerspace - Garden Project</title>
+    <script src="https://aframe.io/releases/0.9.0/aframe.min.js"></script>
+    <script src="https://cdn.rawgit.com/donmccurdy/aframe-extras/v6.0.0/dist/aframe-extras.min.js"></script>
+  </head>
+  <body>
+    <a-scene color-space="sRGB" renderer="colorManagement: true, physicallyCorrectLights: true">
+
+      <!-- Asset Management System -->
+      <a-assets>
+        <!-- Garden -->
+        <a-asset-item id="brazilNutTree-gltf" src="assets-glTF/brazilNutTree.gltf"></a-asset-item>
+        <a-asset-item id="cherryTree-gltf" src="assets-glTF/cherryTree.gltf"></a-asset-item>
+        <a-asset-item id="firTree-gltf" src="assets-glTF/firTree.gltf"></a-asset-item>
+        <a-asset-item id="oakTree-gltf" src="assets-glTF/oakTree.gltf"></a-asset-item>
+        <a-asset-item id="pineTree-gltf" src="assets-glTF/pineTree.gltf"></a-asset-item>
+        <a-asset-item id="spruceTree-gltf" src="assets-glTF/spruceTree.gltf"></a-asset-item>
+        <a-asset-item id="weepingWillowTree-gltf" src="assets-glTF/weepingWillowTree.gltf"></a-asset-item>
+        <a-asset-item id="willowTree-gltf" src="assets-glTF/PollardWillowTree.gltf"></a-asset-item>
+
+        <a-asset-item id="boulder-gltf" src="assets-glTF/boulder_03.gltf"></a-asset-item>
+        <a-asset-item id="fence-gltf" src="assets-glTF/SM_Fence_02.gltf"></a-asset-item>
+        <a-asset-item id="gate-gltf" src="assets-glTF/Archway2.gltf"></a-asset-item>
+        <a-asset-item id="treeStump-gltf" src="assets-glTF/treeStump.gltf"></a-asset-item>
+      </a-assets>
+
+      <!-- Player -->
+      <a-camera position="0 1 0">
+        <a-cursor id="cursor"></a-cursor>
+      </a-camera>
+
+      <!-- Scene -->
+      <a-sky color="#87CEFA"></a-sky>
+      <a-plane position="0 0 -4" rotation="-90 0 0" height="100" width="100" color="#7BC8A4"></a-plane>
+
+      <!--BorderFront-->
+      <a-entity gltf-model="#gate-gltf" position="0 0 -4" rotation="0 0 0" scale=".005 .005 .005"></a-entity>
+      <a-entity gltf-model="#fence-gltf" position="-7 0 -4" rotation="0 180 0" scale="1 1 1"></a-entity>
+      <a-entity gltf-model="#fence-gltf" position="-5 0 -4" rotation="0 180 0" scale="1 1 1"></a-entity>
+      <a-entity gltf-model="#fence-gltf" position="-3 0 -4" rotation="0 180 0" scale="1 1 1"></a-entity>
+      <a-entity gltf-model="#fence-gltf" position="7 0 -4" rotation="0 180 0" scale="1 1 1"></a-entity>
+      <a-entity gltf-model="#fence-gltf" position="5 0 -4" rotation="0 180 0" scale="1 1 1"></a-entity>
+      <a-entity gltf-model="#fence-gltf" position="3 0 -4" rotation="0 180 0" scale="1 1 1"></a-entity>
+
+      <!--BorderBack-->
+      <a-entity gltf-model="#fence-gltf" position="-7 0 -20" rotation="0 0 0" scale="1 1 1"></a-entity>
+      <a-entity gltf-model="#fence-gltf" position="-5 0 -20" rotation="0 0 0" scale="1 1 1"></a-entity>
+      <a-entity gltf-model="#fence-gltf" position="-3 0 -20" rotation="0 0 0" scale="1 1 1"></a-entity>
+      <a-entity gltf-model="#fence-gltf" position="-1 0 -20" rotation="0 0 0" scale="1 1 1"></a-entity>
+      <a-entity gltf-model="#fence-gltf" position="7 0 -20" rotation="0 0 0" scale="1 1 1"></a-entity>
+      <a-entity gltf-model="#fence-gltf" position="5 0 -20" rotation="0 0 0" scale="1 1 1"></a-entity>
+      <a-entity gltf-model="#fence-gltf" position="3 0 -20" rotation="0 0 0" scale="1 1 1"></a-entity>
+      <a-entity gltf-model="#fence-gltf" position="1 0 -20" rotation="0 0 0" scale="1 1 1"></a-entity>
+      
+      <!--BorderRight-->
+      <a-entity gltf-model="#fence-gltf" position="8 0 -5" rotation="0 -90 0" scale="1 1 1"></a-entity>
+      <a-entity gltf-model="#fence-gltf" position="8 0 -7" rotation="0 -90 0" scale="1 1 1"></a-entity>
+      <a-entity gltf-model="#fence-gltf" position="8 0 -9" rotation="0 -90 0" scale="1 1 1"></a-entity>
+      <a-entity gltf-model="#fence-gltf" position="8 0 -11" rotation="0 -90 0" scale="1 1 1"></a-entity>
+      <a-entity gltf-model="#fence-gltf" position="8 0 -13" rotation="0 -90 0" scale="1 1 1"></a-entity>
+      <a-entity gltf-model="#fence-gltf" position="8 0 -15" rotation="0 -90 0" scale="1 1 1"></a-entity>
+      <a-entity gltf-model="#fence-gltf" position="8 0 -17" rotation="0 -90 0" scale="1 1 1"></a-entity>
+      <a-entity gltf-model="#fence-gltf" position="8 0 -19" rotation="0 -90 0" scale="1 1 1"></a-entity>
+
+      <!--BorderLeft-->
+      <a-entity gltf-model="#fence-gltf" position="-8 0 -5" rotation="0 90 0" scale="1 1 1"></a-entity>
+      <a-entity gltf-model="#fence-gltf" position="-8 0 -7" rotation="0 90 0" scale="1 1 1"></a-entity>
+      <a-entity gltf-model="#fence-gltf" position="-8 0 -9" rotation="0 90 0" scale="1 1 1"></a-entity>
+      <a-entity gltf-model="#fence-gltf" position="-8 0 -11" rotation="0 90 0" scale="1 1 1"></a-entity>
+      <a-entity gltf-model="#fence-gltf" position="-8 0 -13" rotation="0 90 0" scale="1 1 1"></a-entity>
+      <a-entity gltf-model="#fence-gltf" position="-8 0 -15" rotation="0 90 0" scale="1 1 1"></a-entity>
+      <a-entity gltf-model="#fence-gltf" position="-8 0 -17" rotation="0 90 0" scale="1 1 1"></a-entity>
+      <a-entity gltf-model="#fence-gltf" position="-8 0 -19" rotation="0 90 0" scale="1 1 1"></a-entity>
+
+
+    </a-scene>
+  </body>
+</html>
+
+<!-- Credits:
+The following models are created by 'Poly by Google' at https://poly.google.com/.
+
+Brazil Nut Tree: https://poly.google.com/view/0CDi5mHR26U
+Cherry Tree: https://poly.google.com/view/1FSDzk-LRdA
+Dead Tree: https://poly.google.com/view/aPFov1IaCWu
+Fir Tree: https://poly.google.com/view/5mED_iGhudj
+Oak Tree: https://poly.google.com/view/0DtsZfSTWzA
+Pine Tree: https://poly.google.com/view/fCT73jIf5jN
+Spruce Tree: https://poly.google.com/view/ahT2_ZxtLIq
+Weeping Willow: https://poly.google.com/view/74_FuSwEd0E
+Willow Tree: https://poly.google.com/view/2acu5nrdDYl
+
+Boulder: https://poly.google.com/view/d1MDVth-0LY
+Fence: https://poly.google.com/view/atIKFMlZf9-
+Gate: https://poly.google.com/view/07oA3gKcvLt
+Log: https://poly.google.com/view/dkRLlPSdgdR
+Tree Stump: https://poly.google.com/view/esFOngb0uwl
+
+-->

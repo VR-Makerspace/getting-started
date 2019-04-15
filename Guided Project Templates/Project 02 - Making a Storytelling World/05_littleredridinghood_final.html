@@ -1,0 +1,124 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <title>VRNM Makerspace - Storytelling World: Little Red Riding Hood</title>
+    <script src="https://aframe.io/releases/0.9.0/aframe.min.js"></script>
+    <script src="https://cdn.rawgit.com/donmccurdy/aframe-extras/v6.0.0/dist/aframe-extras.min.js"></script>
+
+    <script>
+      AFRAME.registerComponent('story-manager', {
+        init: function () {
+          var floatingText = document.querySelector('#floatingText');
+          var hunterText01 = document.querySelector('#hunterText01');
+          var wolfText = document.querySelector('#wolfText');
+          var hunterText02 = document.querySelector('#hunterText02');
+          var endingText = document.querySelector('#endingText');
+          var hunter = document.querySelector('#hunter');
+          var wolf = document.querySelector('#wolf');
+          var grandmother = document.querySelector('#grandmother');
+          
+          var spokenToWolf = false;
+          var wolfIsDead = false;
+
+          floatingText.setAttribute('animation', 'property: opacity; from: 1; to: 0; dur:5000');
+
+          hunter.addEventListener('click', function () {
+            if (spokenToWolf == false) {
+              hunterText01.setAttribute('visible', true);
+            } else {
+              hunterText02.setAttribute('visible', true);
+              wolfText.setAttribute('visible', false);
+              wolf.setAttribute('rotation', '0 10 90');
+              wolfIsDead = true;
+              grandmother.setAttribute('visible', true);
+              endingText.setAttribute('value', 'Your Grandmother is safe!\nHappy Ending!');
+            }
+          });
+
+          wolf.addEventListener('click', function () {
+            if (wolfIsDead == false) {
+              wolfText.setAttribute('visible', true);
+              hunterText01.setAttribute('visible', false);
+              spokenToWolf = true;
+            }
+          });
+        }  
+      });
+
+    </script>
+  </head>
+  <body>
+    <a-scene story-manager color-space="sRGB" renderer="colorManagement: true, physicallyCorrectLights: true">
+
+      <!-- Asset Management System -->
+      <a-assets>
+        <a-asset-item id="chalet-gltf" src="assets-glTF/CUPIC_Chalet.gltf"></a-asset-item>
+        <a-asset-item id="hunter-gltf" src="assets-glTF/Archer.gltf"></a-asset-item>
+        <a-asset-item id="wolf-gltf" src="assets-glTF/PUSHILIN_wolf.gltf"></a-asset-item>
+        <a-asset-item id="house-gltf" src="assets-glTF/House.gltf"></a-asset-item>
+        <a-asset-item id="barn-gltf" src="assets-glTF/SM_Barn_02.gltf"></a-asset-item>
+        <a-asset-item id="forest-gltf" src="assets-glTF/PUSHILIN_forest.gltf"></a-asset-item>
+        <a-asset-item id="grandmother-gltf" src="assets-glTF/model.gltf"></a-asset-item>
+
+        <a-mixin id="storyText" text="align:center; color:black" scale="0.4 0.4 0.4"></a-mixin>
+      </a-assets>
+
+      <!-- Player -->
+      <a-camera position="0 1 0">
+        <a-cursor id="cursor"></a-cursor>
+      </a-camera>
+ 
+      <a-sky color="#ECECEC"></a-sky>
+      <a-plane position="0 0 0" rotation="-90 0 0" height="100" width="100" color="#7BC8A4"></a-plane>
+
+      <a-entity id="village" position="0 0 0">
+        <a-entity gltf-model="#house-gltf" position="2 0 -8" rotation="0 180 0" scale="0.05 0.05 0.05"></a-entity>
+        <a-entity gltf-model="#chalet-gltf" position="0 0 6" rotation="0 0 0" scale="0.01 0.01 0.01"></a-entity>
+        <a-entity id="hunter" gltf-model="#hunter-gltf" position="-4 0 -6" rotation="0 20 0" scale="0.15 0.15 0.15"></a-entity>
+      </a-entity>
+
+      <a-entity id="forest" position="5 0 -20" rotation="0 -50 0">
+        <a-entity id="wolf" gltf-model="#wolf-gltf" position="4 0.6 5" rotation="0 10 0" scale="0.75 0.75 0.75"></a-entity>
+        <a-entity gltf-model="#forest-gltf" position="0 1.6 -5" scale="8 8 8"></a-entity>
+        <a-entity gltf-model="#barn-gltf" position="5 0 -20" rotation="0 90 0" scale="0.4 0.4 0.4"></a-entity>
+        <a-entity id="grandmother" gltf-model="#grandmother-gltf" position="5 -3.5 -13" rotation="0 10 0" scale="3.5 3.5 3.5" visible="false"></a-entity>
+      </a-entity>
+
+      <!-- Story Text -->
+      <a-text id="floatingText" mixin="storyText" visible="true" position="0 2.5 -2"
+              value="This is the story of the Little Red Riding Hood."></a-text>
+
+      <a-text id="hunterText01" mixin="storyText" visible="false" position="-4 2 -6"
+              value="I'm in the mood to hunt some big bad wolves."></a-text>
+
+      <a-text id="wolfText" mixin="storyText" visible="false" position="4 1.5 -14" rotation="0 -40 0"
+              value="I'm hungry and there's no one to stop me.\n\n(Hint: Talk to the Hunter?)"></a-text>
+
+      <a-text id="hunterText02" mixin="storyText" visible="false" position="-4 2 -6"
+              value="There's a wolf threatening the forest?\nI'll take care of that."></a-text>
+
+      <a-text id="endingText" mixin="storyText" visible="true" position="17.7 1.7 -26" rotation="0 -30 0"
+              value="Your Grandmother is hiding from the Wolf!\nShe is nowhere to be found..."></a-text>
+
+    </a-scene>
+  </body>
+</html>
+
+<!-- Credits:
+The following models are created by 'Poly by Google' at https://poly.google.com/.
+
+Barn: https://poly.google.com/view/6OQd70uscs-
+Chalet: https://poly.google.com/view/fOFK2hYBrbA
+Forest: https://poly.google.com/view/2_fv3tn3NG_
+Hunter: https://poly.google.com/view/0jlabhnBscv
+House: https://poly.google.com/view/6PGyqELX8M-
+Wolf: https://poly.google.com/view/45wMLZn4kj1
+
+
+The following models are created by 'Aya Kawa' at https://poly.google.com/.
+
+Grandmother: https://poly.google.com/view/brIJ7qxMvx-
+
+-->
+
+

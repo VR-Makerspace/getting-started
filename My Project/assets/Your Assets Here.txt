@@ -1,0 +1,1 @@
+You can put your 3D models, audio files, image files, or other assets in this folder.

@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <title>VR Makerspace A-Frame Tutorial</title>
+    <script src="https://aframe.io/releases/0.9.0/aframe.min.js"></script>
+    <script>
+		  AFRAME.registerComponent('foo', {
+	  	  init: function () {
+	    	  var sceneEl = document.querySelector('a-scene'); 
+	      	var boxEl = sceneEl.querySelector('#box');
+	      	var cylinderEl = sceneEl.querySelector('#cylinder');
+	      	var sphereEl = sceneEl.querySelector('#sphere');
+
+          boxEl.addEventListener('mouseenter', function() {
+            boxEl.setAttribute('color', 'grey');
+          });
+
+          boxEl.addEventListener('mouseleave', function() {
+            boxEl.setAttribute('color', '#4CC3D9');
+          });
+
+          cylinderEl.addEventListener('click', function() {
+            cylinderEl.setAttribute('rotation', '0 0 90');
+          });
+
+          sphereEl.addEventListener('click', function() {
+            sphereEl.setAttribute('scale', '.5 .5 .5');
+          })
+	   		}
+	  	});
+    </script>
+  </head>
+
+  <body>
+    <a-scene foo>
+      <a-camera position="0 1 0">
+	    	<a-cursor id="cursor"></a-cursor>
+      </a-camera>
+
+      <a-sky color="#ECECEC"></a-sky>
+      <a-box id="box" position="-1 0.5 -3" rotation="0 45 0" color="#4CC3D9"></a-box>
+      <a-sphere id="sphere" position="0 1.25 -5" radius="1.25" color="#EF2D5E"></a-sphere>
+      <a-cylinder id="cylinder" position="1 0.75 -3" radius="0.5" height="1.5" color="#FFC65D"></a-cylinder>
+      <a-plane position="0 0 -4" rotation="-90 0 0" height="100" width="100" color="#7BC8A4"></a-plane>
+    </a-scene>
+  </body>
+</html>
+
+<!--
+  
+-->
